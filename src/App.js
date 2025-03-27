@@ -10,7 +10,6 @@ const skipBtnLogo = process.env.PUBLIC_URL + '/images/icons/ph_fast-forward-fill
 let playBtnColor;
 let btnColor;
 
-
 playBtnColor = 'rgba(255, 76, 76, 0.71)';
 btnColor = 'rgba(255, 76, 76, 0.15';
 
@@ -20,7 +19,7 @@ function App() {
     <div className="App">
       <div className="Canvas">
         <Chip />
-        <Timer />
+        <Timer duration={25 * 60} />
         <div className='btns-container'>
           <Btn btnLogo={settingsBtnLogo} bgColor={btnColor} btnPadding={'10px 20px'}/>
           <Btn btnLogo={playBtnLogo} bgColor={playBtnColor} btnPadding={'15px 30px'}/>
