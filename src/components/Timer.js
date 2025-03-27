@@ -10,12 +10,20 @@ const countdown = function() {
   const minutes = Math.floor(secondsRemaining / 60);
   let seconds = secondsRemaining % 60;
 
+  if ( seconds < 10 ) {
+    seconds = '0' + seconds;
+  } else {
+    seconds = seconds;
+  }
+
   secondsRemaining--;
 }
 
 
 
 function Timer() {
+  setInterval(countdown, 1000);
+
   return (
     <div className='container timer-container'>
         <h1 className='timer-clock'>
