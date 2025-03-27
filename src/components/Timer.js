@@ -3,6 +3,18 @@
 
 import '../styles/Timer.css';
 
+let startingMinutes = 25;
+let secondsRemaining = startingMinutes * 60;
+
+const countdown = function() {
+  const minutes = Math.floor(secondsRemaining / 60);
+  let seconds = secondsRemaining % 60;
+
+  secondsRemaining--;
+}
+
+
+
 function Timer() {
   return (
     <div className='container timer-container'>
@@ -11,7 +23,7 @@ function Timer() {
             <span className='seconds'>00</span>
         </h1>
     </div>
-  )
+  );
 }
 
-export default Timer
+export default Timer;

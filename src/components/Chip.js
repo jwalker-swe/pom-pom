@@ -10,8 +10,8 @@ function Chip() {
     return (
         <div className="container chip-main-container" style={{}}>
             <div className='chip-secondary-container' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <div className="chip-icon-container" style={{width: 32, height: 32, marginRight: 10}}>
-                    <img className="focus-icon" src={iconStateFocus}></img>
+                <div className="chip-icon-container" style={{width: 32, height: 32, marginRight: 8}}>
+                    <img className="focus-icon" src={iconStateFocus} style={{width: 28, height: 28}}></img>
                 </div>
                 <h1 className="heading chip-heading" style={{color: '#471515'}}>Focus</h1>
             </div>
