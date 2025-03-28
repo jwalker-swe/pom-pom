@@ -20,12 +20,9 @@ btnColor = 'rgba(255, 76, 76, 0.15';
 function App() {
 
   const HandleClick = function() {
-    const { globalState, setGlobalState } = useContext(GlobalStateContext); 
+    // const { globalState, setGlobalState } = useContext(GlobalStateContext); 
   }
 
-  useEffect(() => {
-
-  }, [])
 
   return (
     <GlobalStateProvider>
