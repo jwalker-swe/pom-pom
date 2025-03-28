@@ -1,5 +1,6 @@
 // Create the chip component that tells you which state  you're currently in: Focus, Short Break, or Long Break
-
+import React, {useState, useEffect, useContext} from 'react';
+import { GlobalStateContext } from '../GlobalState';
 import '../styles/Chip.css';
 
 const iconStateFocus = process.env.PUBLIC_URL + "/images/icons/ph_brain-fill.png";

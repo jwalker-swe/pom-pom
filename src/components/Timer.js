@@ -1,23 +1,28 @@
 // Create the timer that will change initial value based on inputs from user and current state user is in
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import { GlobalStateContext } from '../GlobalState';
 import '../styles/Timer.css';
 
 
 function Timer({ duration }) {
+  const { globalState, setGlobalState } = useContext(GlobalStateContext);
 
-  const [state, setState] = useState('Focus');
   const [time, setTime] = useState(duration);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (time > 0) {
+    if (time > 0 && globalState.running === true) {
+      setTimeout(() => {
         setTime(time-1);
-      };
-      if (time === 0) {
-        setState('Short Break');
-      }
-    }, 1000)
-  }, [time])
+      }, 1000)
+    } 
+    if (time === 0) {
+      setGlobalState(prevState => ({
+        running: false,
+        mode: 'short-break'
+      }));
+      console.log(`Current mode: ${globalState.mode}`)
+    }
+  }, [globalState.running, time])
 
   const getFormattedTime = (time) => {
     let totalSeconds = time;
