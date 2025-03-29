@@ -11,33 +11,52 @@ const playBtnLogo = process.env.PUBLIC_URL + "/images/icons/ph_play-fill.png";
 const settingsBtnLogo = process.env.PUBLIC_URL + '/images/icons/ph_dots-three-outline-fill.png';
 const skipBtnLogo = process.env.PUBLIC_URL + '/images/icons/ph_fast-forward-fill.png';
 
-let playBtnColor;
-let btnColor;
 
-playBtnColor = 'rgba(255, 76, 76, 0.71)';
-btnColor = 'rgba(255, 76, 76, 0.15';
+let backgroundColor;
+let mainBtnColor;
+let secondaryBtnColor;
+let fontColor;
+
 
 function App() {
 
-  const HandleClick = function() {
-    // const { globalState, setGlobalState } = useContext(GlobalStateContext); 
+
+  const { globalState, setGlobalState } = useContext(GlobalStateContext);
+
+
+  const setColor = () => {
+    if ( globalState.mode === 'focus' ) {
+        backgroundColor = 'rgba(255, 76, 76, 0.15)'
+        mainBtnColor = 'rgba(255, 76, 76, 0.71)';
+        secondaryBtnColor = 'rgba(255, 76, 76, 0.15)'
+        fontColor = '#471515';
+    }
+
+    if ( globalState.mode === 'short-break' ) {
+        backgroundColor = 'rgba(77, 218, 110, 0.15)';
+        mainBtnColor = 'rgba(77, 218, 110, 0.62)';
+        secondaryBtnColor = 'rgba(77, 218, 110, 0.15)';
+        fontColor = '#14401D';
+    }
   }
+
+  useEffect( () => {
+    setColor();
+  }, [globalState.mode])
 
 
   return (
-    <GlobalStateProvider>
-      <div className="App">
+      <div className="App" style={{backgroundColor: backgroundColor}}>
         <div className="Canvas">
           <Chip />
-          <Timer duration={25 * 60} />
+          <Timer duration={10} />
           <div className='btns-container'>
-            <Btn btnLogo={settingsBtnLogo} bgColor={btnColor} btnPadding={'10px 20px'}/>
-            <Btn onClick={HandleClick} btnLogo={playBtnLogo} bgColor={playBtnColor} btnPadding={'15px 30px'}/>
-            <Btn btnLogo={skipBtnLogo} bgColor={btnColor} btnPadding={'10px 20px'}/>
+            <Btn btnType={'settings'} btnLogo={settingsBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
+            <Btn btnType={'play-pause'} btnLogo={playBtnLogo} bgColor={mainBtnColor} btnPadding={'15px 30px'}/>
+            <Btn btnType='skip' btnLogo={skipBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
           </div>
         </div>
       </div>
-    </GlobalStateProvider>
   );
 
 }
