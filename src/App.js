@@ -48,8 +48,8 @@ function App() {
   return (
       <div className="App" style={{backgroundColor: backgroundColor}}>
         <div className="Canvas">
-          <Chip />
-          <Timer duration={10} />
+          <Chip backgroundColor={backgroundColor} fontColor={fontColor}/>
+          <Timer duration={10} fontColor={fontColor} />
           <div className='btns-container'>
             <Btn btnType={'settings'} btnLogo={settingsBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
             <Btn btnType={'play-pause'} btnLogo={playBtnLogo} bgColor={mainBtnColor} btnPadding={'15px 30px'}/>

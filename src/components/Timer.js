@@ -4,10 +4,10 @@ import { GlobalStateContext } from '../GlobalState';
 import '../styles/Timer.css';
 
 
-function Timer({ duration }) {
+function Timer(props) {
   const { globalState, setGlobalState } = useContext(GlobalStateContext);
 
-  const [time, setTime] = useState(duration);
+  const [time, setTime] = useState(props.duration);
 
   useEffect(() => {
     if (time > 0 && globalState.running === true) {
@@ -49,9 +49,9 @@ function Timer({ duration }) {
 
   return (
     <div className='container timer-container'>
-        <h1 className='timer-clock'>
-            <span className='minutes'>{getFormattedTime(time).currentMinutes}</span>
-            <span className='seconds'>{getFormattedTime(time).currentSeconds}</span>
+        <h1 className='timer-clock' style={{color: props.fontColor}}>
+            <span className='minutes' style={{color: props.fontColor}}>{getFormattedTime(time).currentMinutes}</span>
+            <span className='seconds' style={{color: props.fontColor}}>{getFormattedTime(time).currentSeconds}</span>
         </h1>
     </div>
   );

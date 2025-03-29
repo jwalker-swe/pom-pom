@@ -7,14 +7,14 @@ const iconStateFocus = process.env.PUBLIC_URL + "/images/icons/ph_brain-fill.png
 const iconStateShortBreak = process.env.PUBLIC_URL + '/images/icons/state/icon-state-short-break.png';
 const iconStateLongBreak = process.env.PUBLIC_URL + '/images/icons/state/icon-state-long-break.png';
 
-function Chip() {
+function Chip(props) {
     return (
-        <div className="container chip-main-container" style={{}}>
+        <div className="container chip-main-container" style={{backgroundColor: props.backgroundColor}}>
             <div className='chip-secondary-container' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <div className="chip-icon-container" style={{width: 32, height: 32, marginRight: 8}}>
                     <img className="focus-icon" src={iconStateFocus} style={{width: 28, height: 28}}></img>
                 </div>
-                <h1 className="heading chip-heading" style={{color: '#471515'}}>Focus</h1>
+                <h1 className="heading chip-heading" style={{color: props.fontColor}}>Focus</h1>
             </div>
         </div>
     );
