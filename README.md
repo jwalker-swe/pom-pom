@@ -46,7 +46,6 @@ Here are some screenshots of Pom Pom in action:
 ![Pom Pom: Focus Mode - Paused](/src/images/screenshots/paused-focus.png)
 ![Pom Pom: Short Break - Running](/src/images/screenshots/running-shortBreak.png)
 
-(Replace `path/to/screenshotX.png` with the actual file paths of your screenshots.)
 
 ## Technologies Used
 
@@ -65,4 +64,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For any questions or feedback, reach out to:
 - **Jordan Walker**
 - GitHub: [@jwalker-swe](https://github.com/jwalker-swe)
-- Email: [your.email@example.com](mailto:your.email@example.com)
+- Email: [jwalker.swe@gmail.com](mailto:jwalker.swe@gmail.com)
