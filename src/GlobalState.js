@@ -5,7 +5,7 @@ const GlobalStateContext = createContext();
 
 const GlobalStateProvider = ({ children }) => {
     const [globalState, setGlobalState] = useState({
-        mode: 'focus',
+        mode: 'long-break',
         running: false,
     });
 

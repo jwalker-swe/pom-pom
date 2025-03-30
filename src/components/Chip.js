@@ -4,14 +4,15 @@ import { GlobalStateContext } from '../GlobalState';
 import '../styles/Chip.css';
 
 const iconStateFocus = process.env.PUBLIC_URL + "/images/icons/ph_brain-fill.png";
-const iconStateShortBreak = process.env.PUBLIC_URL + '/images/icons/state/icon-state-short-break.png';
-const iconStateLongBreak = process.env.PUBLIC_URL + '/images/icons/state/icon-state-long-break.png';
+const iconStateShortBreak = process.env.PUBLIC_URL + '/images/icons/short-break/ph_coffee.png';
+const iconStateLongBreak = process.env.PUBLIC_URL + '/images/icons/long-break/ph_coffee.png';
 
 let backgroundColor;
 let mainBtnColor;
 let secondaryBtnColor;
 let fontColor;
 let chipBorderColor;
+let chipIcon;
 
 function Chip(props) {
 
@@ -23,6 +24,8 @@ function Chip(props) {
         secondaryBtnColor = 'rgba(255, 76, 76, 0.15)'
         fontColor = '#471515';
         chipBorderColor = '#471515';
+
+        chipIcon = iconStateFocus;
    }
 
    if ( globalState.mode === 'short-break') {
@@ -31,6 +34,8 @@ function Chip(props) {
        secondaryBtnColor = 'rgba(77, 218, 110, 0.15)';
        fontColor = '#14401D';
        chipBorderColor = '#14401D';
+
+       chipIcon = iconStateShortBreak;
    }
 
    if ( globalState.mode === 'long-break' ) {
@@ -39,16 +44,18 @@ function Chip(props) {
        secondaryBtnColor = 'rgba(76, 172, 255, 0.15)';
        fontColor = '#153047';
        chipBorderColor = '#153047';
+
+       chipIcon = iconStateLongBreak;
    }
 
     if ( globalState.mode === 'focus' ) {
         return (
-            <div className="container chip-main-container" style={{backgroundColor: backgroundColor, borderColor: props.borderColor}}>
+            <div className="container chip-main-container" style={{backgroundColor: backgroundColor, borderColor: chipBorderColor}}>
                 <div className='chip-secondary-container' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <div className="chip-icon-container" style={{width: 32, height: 32, marginRight: 8}}>
-                        <img className="focus-icon" src={props.chipLogo} style={{width: 28, height: 28}}></img>
+                        <img className="focus-icon" src={chipIcon} style={{width: 28, height: 28}}></img>
                     </div>
-                    <h1 className="heading chip-heading" style={{color: props.fontColor}}>Focus</h1>
+                    <h1 className="heading chip-heading" style={{color: fontColor}}>Focus</h1>
                 </div>
             </div>
         );
@@ -56,12 +63,12 @@ function Chip(props) {
 
     if ( globalState.mode === 'short-break' ) {
         return (
-            <div className="container chip-main-container" style={{backgroundColor: backgroundColor, borderColor: props.borderColor}}>
+            <div className="container chip-main-container" style={{backgroundColor: backgroundColor, borderColor: chipBorderColor}}>
                 <div className='chip-secondary-container' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <div className="chip-icon-container" style={{width: 32, height: 32, marginRight: 8}}>
-                        <img className="focus-icon" src={props.chipLogo} style={{width: 28, height: 28}}></img>
+                        <img className="focus-icon" src={chipIcon} style={{width: 28, height: 28}}></img>
                     </div>
-                    <h1 className="heading chip-heading" style={{color: props.fontColor}}>Short Break</h1>
+                    <h1 className="heading chip-heading" style={{color: fontColor}}>Short Break</h1>
                 </div>
             </div>
         );
@@ -69,12 +76,12 @@ function Chip(props) {
 
     if ( globalState.mode === 'long-break' ) {
         return (
-            <div className="container chip-main-container" style={{backgroundColor: backgroundColor, borderColor: props.borderColor}}>
+            <div className="container chip-main-container" style={{backgroundColor: backgroundColor, borderColor: chipBorderColor}}>
                 <div className='chip-secondary-container' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <div className="chip-icon-container" style={{width: 32, height: 32, marginRight: 8}}>
-                        <img className="focus-icon" src={props.chipLogo} style={{width: 28, height: 28}}></img>
+                        <img className="focus-icon" src={chipIcon} style={{width: 28, height: 28}}></img>
                     </div>
-                    <h1 className="heading chip-heading" style={{color: props.fontColor}}>Short Break</h1>
+                    <h1 className="heading chip-heading" style={{color: fontColor}}>Long Break</h1>
                 </div>
             </div>
         );

@@ -60,7 +60,7 @@ function Btn(props) {
 
         let running = globalState.running;
 
-        playBtnLogo = running ? process.env.PUBLIC_URL + "/images/icons/focus/ph_pause-fill.png" : process.env.PUBLIC_URL + "/images/icons/focus/ph_play-fill.png";
+        playBtnLogo = running ? process.env.PUBLIC_URL + "/images/icons/long-break/ph_pause-fill.png" : process.env.PUBLIC_URL + "/images/icons/long-break/ph_play-fill.png";
 
         settingsBtnLogo = process.env.PUBLIC_URL + '/images/icons/long-break/ph_dots-three-outline-fill.png';
 

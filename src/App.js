@@ -22,6 +22,20 @@ let chipLogo = process.env.PUBLIC_URL + '/images/icons/focus/ph_brain-fill.png';
 
 function App() {
 
+  const { globalState, setGlobalState } = useContext(GlobalStateContext);
+
+  if ( globalState.mode === 'focus' ) {
+    backgroundColor = 'rgba(255, 76, 76, 0.15)';
+  }
+
+  if ( globalState.mode === 'short-break' ) {
+    backgroundColor = 'rgba(77, 218, 110, 0.15)';
+  }
+
+  if ( globalState.mode === 'long-break' ) {
+    backgroundColor = 'rgba(76, 172, 255, 0.15)';
+  }
+
 
   return (
       <div className="App" style={{backgroundColor: backgroundColor}}>
