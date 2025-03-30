@@ -3,61 +3,104 @@ import React, {useState, useEffect, useContext} from 'react';
 import { GlobalStateContext } from '../GlobalState';
 import '../styles/Button.css';
 
-const playBtnLogo = process.env.PUBLIC_URL + "/images/icons/ph_play-fill.png";
+let playBtnLogo;
+let pauseBtnLogo;
+let settingsBtnLogo;
+let skipBtnLogo;
 
+let backgroundColor;
 let mainBtnColor;
 let secondaryBtnColor;
 let fontColor;
+let chipBorderColor;
 
 function Btn(props) {
 
     const { globalState, setGlobalState } = useContext(GlobalStateContext);
-    
 
-    const playPause = () => {
-        if ( globalState.running === false ) {
-            setGlobalState(prevState => ({
-                ...prevState,
-                running: true
-            }))
-        } else {
-            setGlobalState(prevState => ({
-                ...prevState,
-                running: false
-            }))
-        }
+    if ( globalState.mode === 'focus' ) {
+        backgroundColor = 'rgba(255, 76, 76, 0.15)';
+        mainBtnColor = 'rgba(255, 76, 76, 0.71)';
+        secondaryBtnColor = 'rgba(255, 76, 76, 0.15)'
+        fontColor = '#471515';
+        chipBorderColor = '#471515';
+
+        let running = globalState.running;
+
+        playBtnLogo = running ? process.env.PUBLIC_URL + "/images/icons/focus/ph_pause-fill.png" : process.env.PUBLIC_URL + "/images/icons/focus/ph_play-fill.png";
+
+        settingsBtnLogo = process.env.PUBLIC_URL + '/images/icons/focus/ph_dots-three-outline-fill.png';
+
+        skipBtnLogo = process.env.PUBLIC_URL + '/images/icons/focus/ph_fast-forward-fill.png';
+    
     }
 
+    if ( globalState.mode === 'short-break') {
+        backgroundColor = 'rgba(77, 218, 110, 0.15)';
+        mainBtnColor = 'rgba(77, 218, 110, 0.62)';
+        secondaryBtnColor = 'rgba(77, 218, 110, 0.15)';
+        fontColor = '#14401D';
+        chipBorderColor = '#14401D';
 
-    if ( props.btnType === "play-pause" ) {
+        let running = globalState.running;
+
+        playBtnLogo = running ? process.env.PUBLIC_URL + "/images/icons/short-break/ph_pause-fill.png" : process.env.PUBLIC_URL + "/images/icons/short-break/ph_play-fill.png";
+
+        settingsBtnLogo = process.env.PUBLIC_URL + '/images/icons/short-break/ph_dots-three-outline-fill.png';
+
+        skipBtnLogo = process.env.PUBLIC_URL + '/images/icons/short-break/ph_fast-forward-fill.png';
+    }
+
+    if ( globalState.mode === 'long-break' ) {
+        backgroundColor = 'rgba(76, 172, 255, 0.15)';
+        mainBtnColor = 'rgba(76, 172, 255, 0.62)';
+        secondaryBtnColor = 'rgba(76, 172, 255, 0.15)';
+        fontColor = '#153047';
+        chipBorderColor = '#153047';
+
+        let running = globalState.running;
+
+        playBtnLogo = running ? process.env.PUBLIC_URL + "/images/icons/focus/ph_pause-fill.png" : process.env.PUBLIC_URL + "/images/icons/focus/ph_play-fill.png";
+
+        settingsBtnLogo = process.env.PUBLIC_URL + '/images/icons/long-break/ph_dots-three-outline-fill.png';
+
+        skipBtnLogo = process.env.PUBLIC_URL + '/images/icons/long-break/ph_fast-forward-fill.png';
+    }
+
+    function changeIcon() {
+
+    }
+
+    if (props.btnType === 'play-pause') {
         return (
-            <button onClick={playPause} className='btn' style={{backgroundColor: props.bgColor, padding: props.btnPadding}}>
+            <button className='btn' style={{backgroundColor: mainBtnColor, padding: props.btnPadding}}>
                 <div className='btn-icon-container'>
-                    <img src={props.btnLogo}></img>
+                    <img src={playBtnLogo}></img>
                 </div>
             </button>
         ); 
     }
 
-    if ( props.btnType === 'settings' ) {
+    if (props.btnType === 'settings') {
         return (
-            <button className='btn' style={{backgroundColor: props.bgColor, padding: props.btnPadding}}>
+            <button className='btn' style={{backgroundColor: secondaryBtnColor, padding: props.btnPadding}}>
                 <div className='btn-icon-container'>
-                    <img src={props.btnLogo}></img>
+                    <img src={settingsBtnLogo}></img>
                 </div>
             </button>
-        )
+        ); 
     }
 
-    if ( props.btnType === 'skip' ) {
+    if (props.btnType === 'skip') {
         return (
-            <button className='btn' style={{backgroundColor: props.bgColor, padding: props.btnPadding}}>
+            <button className='btn' style={{backgroundColor: secondaryBtnColor, padding: props.btnPadding}}>
                 <div className='btn-icon-container'>
-                    <img src={props.btnLogo}></img>
+                    <img src={skipBtnLogo}></img>
                 </div>
             </button>
-        )
+        ); 
     }
+    
 }
 
 export default Btn;
