@@ -28,11 +28,9 @@ function Timer(props) {
     fontColor = '#153047';
   }
 
-
-
   fontWeight = running ? 'bold' : 'normal';
 
-
+  // Count down
   useEffect(() => {
 
     if ( running ) {
@@ -43,17 +41,26 @@ function Timer(props) {
       }, 1000)
     }
 
-    if ( time === 0 ) {
+    if ( time === 0 && mode === 'focus' ) {
       setGlobalState(prepState => ({
         ...prepState,
         mode: 'short-break'
       }))
+      setTime(5 * 60);
     }
 
-    
+    if ( time === 0 && mode === 'short-break') {
+      setGlobalState(prepState => ({
+        ...prepState,
+        mode: 'focus'
+      }))
+      setTime(25 * 60);
+    }
 
   }, [time, running])
 
+
+  // Formate time for display
   const formatTime = (time) => {
     let totalSeconds = time;
     let totalMinutes = parseInt(Math.floor(totalSeconds / 60));
