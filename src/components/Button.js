@@ -16,8 +16,11 @@ let chipBorderColor;
 
 function Btn(props) {
 
+    // Get globalState
     const { globalState, setGlobalState } = useContext(GlobalStateContext);
 
+
+    // Set variables based on globalState.mode and globalState.running
     if ( globalState.mode === 'focus' ) {
         backgroundColor = 'rgba(255, 76, 76, 0.15)';
         mainBtnColor = 'rgba(255, 76, 76, 0.71)';
@@ -67,13 +70,44 @@ function Btn(props) {
         skipBtnLogo = process.env.PUBLIC_URL + '/images/icons/long-break/ph_fast-forward-fill.png';
     }
 
-    function changeIcon() {
 
+    function startTimer() {
+        let running = globalState.running;
+
+        running = running ? false : true;
+
+        setGlobalState(prepState => ({
+            ...prepState,
+            running: running
+        }))
     }
+
+    function changeMode() {
+        let mode = globalState.mode;
+        let nextMode = globalState.nextMode;
+
+        if ( mode === 'focus' ) {
+            setGlobalState(prepState => ({
+                ...prepState,
+                mode: nextMode,
+                nextMode: 'focus'
+            }))
+        }
+
+        if ( mode === 'short-break') {
+            setGlobalState(prepState => ({
+                ...prepState,
+                mode: nextMode,
+                nextMode: 'short-break'
+            }))
+        }
+    }
+
+    // Generate components based on conditionals
 
     if (props.btnType === 'play-pause') {
         return (
-            <button className='btn' style={{backgroundColor: mainBtnColor, padding: props.btnPadding}}>
+            <button onClick={startTimer} className='btn' style={{backgroundColor: mainBtnColor, padding: props.btnPadding}}>
                 <div className='btn-icon-container'>
                     <img src={playBtnLogo}></img>
                 </div>
@@ -93,7 +127,7 @@ function Btn(props) {
 
     if (props.btnType === 'skip') {
         return (
-            <button className='btn' style={{backgroundColor: secondaryBtnColor, padding: props.btnPadding}}>
+            <button onClick={changeMode} className='btn' style={{backgroundColor: secondaryBtnColor, padding: props.btnPadding}}>
                 <div className='btn-icon-container'>
                     <img src={skipBtnLogo}></img>
                 </div>

@@ -19,10 +19,14 @@ let skipBtnLogo = process.env.PUBLIC_URL + '/images/icons/focus/ph_fast-forward-
 
 let chipLogo = process.env.PUBLIC_URL + '/images/icons/focus/ph_brain-fill.png';
 
+let duration;
+
 
 function App() {
 
   const { globalState, setGlobalState } = useContext(GlobalStateContext);
+
+  let mode = globalState.mode;
 
   if ( globalState.mode === 'focus' ) {
     backgroundColor = 'rgba(255, 76, 76, 0.15)';
@@ -36,12 +40,28 @@ function App() {
     backgroundColor = 'rgba(76, 172, 255, 0.15)';
   }
 
+  if ( mode === 'focus' ) {
+    return (
+        <div className="App" style={{backgroundColor: backgroundColor}}>
+          <div className="Canvas">
+            <Chip backgroundColor={backgroundColor} fontColor={fontColor} chipLogo={chipLogo} borderColor={chipBorderColor}/>
+            <Timer duration={1 * 60} fontColor={fontColor} />
+            <div className='btns-container'>
+              <Btn btnType={'settings'} btnLogo={settingsBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
+              <Btn btnType={'play-pause'} btnLogo={playBtnLogo} bgColor={mainBtnColor} btnPadding={'15px 30px'}/>
+              <Btn btnType='skip' btnLogo={skipBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
+            </div>
+          </div>
+        </div>
+    );
+  }
 
-  return (
+  if ( mode === 'short-break' ) {
+    return (
       <div className="App" style={{backgroundColor: backgroundColor}}>
         <div className="Canvas">
           <Chip backgroundColor={backgroundColor} fontColor={fontColor} chipLogo={chipLogo} borderColor={chipBorderColor}/>
-          <Timer duration={25 * 50} fontColor={fontColor} />
+          <Timer duration={2 * 60} fontColor={fontColor} />
           <div className='btns-container'>
             <Btn btnType={'settings'} btnLogo={settingsBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
             <Btn btnType={'play-pause'} btnLogo={playBtnLogo} bgColor={mainBtnColor} btnPadding={'15px 30px'}/>
@@ -50,6 +70,7 @@ function App() {
         </div>
       </div>
   );
+  }
 
 }
 
