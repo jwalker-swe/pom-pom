@@ -9,6 +9,7 @@ const GlobalStateProvider = ({ children }) => {
         duration: 1,
         nextMode: 'short-break',
         running: false,
+        skipped: false
     });
 
     return (

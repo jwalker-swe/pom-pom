@@ -90,7 +90,9 @@ function Btn(props) {
             setGlobalState(prepState => ({
                 ...prepState,
                 mode: nextMode,
-                nextMode: 'focus'
+                nextMode: 'focus',
+                running: false,
+                skipped: true
             }))
         }
 
@@ -98,7 +100,9 @@ function Btn(props) {
             setGlobalState(prepState => ({
                 ...prepState,
                 mode: nextMode,
-                nextMode: 'short-break'
+                nextMode: 'short-break',
+                running: false,
+                skipped: true
             }))
         }
     }

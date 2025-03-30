@@ -5,6 +5,7 @@ import '../styles/Timer.css';
 
 let fontColor;
 let fontWeight;
+let countdown;
 
 
 function Timer(props) {
@@ -15,6 +16,7 @@ function Timer(props) {
 
   let running = globalState.running;
   let mode = globalState.mode;
+  let skipped = globalState.skipped;
 
   if ( globalState.mode === 'focus' ) {
     fontColor = '#471515';
@@ -30,15 +32,33 @@ function Timer(props) {
 
   fontWeight = running ? 'bold' : 'normal';
 
+  function resetTimer () {
+    if ( mode === 'focus' ) {
+      setTime(25 * 60);
+    }
+
+    if ( mode === 'short-break' ) {
+      setTime(5 * 60);
+    }
+
+    if (mode === 'long-break' ) {
+      setTime(15 * 60);
+    }
+  }
+
   // Count down
   useEffect(() => {
 
     if ( running ) {
-      setTimeout(() => {
+      countdown = setTimeout(() => {
         if (time > 0) {
           setTime(time-1);
         }
       }, 1000)
+      if ( skipped ) {
+        clearTimeout(countdown);
+        console.log('timeout cleared');
+      }
     }
 
     if ( time === 0 && mode === 'focus' ) {
@@ -57,8 +77,29 @@ function Timer(props) {
       setTime(25 * 60);
     }
 
-  }, [time, running])
+    if ( skipped ) {
+          if ( mode === 'short-break' ) {
+            setGlobalState(prepState => ({
+              ...prepState,
+              skipped: false
+            }))
+            setTime(5 * 60)
+          }
+    
+          if ( mode === 'focus' ) {
+            setGlobalState(prepState => ({
+              ...prepState,
+              skipped: false
+            }))
+            setTime(25 * 60);
+          }
+        }
 
+    return () => {
+      clearTimeout(countdown);
+    }
+
+  }, [time, running, skipped])
 
   // Formate time for display
   const formatTime = (time) => {
@@ -83,10 +124,6 @@ function Timer(props) {
 
     return formattedTime;
   }
-
-
-
-
 
   return (
     <div className='container timer-container'>
