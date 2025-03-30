@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import { GlobalStateContext } from '../GlobalState';
 import '../styles/Chip.css';
 
-const iconStateFocus = process.env.PUBLIC_URL + "/images/icons/ph_brain-fill.png";
+const iconStateFocus = process.env.PUBLIC_URL + "/images/icons/focus/ph_brain-fill.png";
 const iconStateShortBreak = process.env.PUBLIC_URL + '/images/icons/short-break/ph_coffee.png';
 const iconStateLongBreak = process.env.PUBLIC_URL + '/images/icons/long-break/ph_coffee.png';
 
