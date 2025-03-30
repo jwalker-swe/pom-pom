@@ -42,10 +42,11 @@ To run Pom Pom locally, follow these steps:
 
 Here are some screenshots of Pom Pom in action:
 
-![Pomodoro Focus Running](/src/images/screenshots/running-focus.png)
-![Pomodoro Focus Paused](/src/images/screenshots/paused-focus.png)
-![Pomodoro Short Break Running](/src/images/screenshots/running-shortBreak.png)
+![Pom Pom: Focus Mode - Running](/src/images/screenshots/running-focus.png)
+![Pom Pom: Focus Mode - Paused](/src/images/screenshots/paused-focus.png)
+![Pom Pom: Short Break - Running](/src/images/screenshots/running-shortBreak.png)
 
+(Replace `path/to/screenshotX.png` with the actual file paths of your screenshots.)
 
 ## Technologies Used
 
