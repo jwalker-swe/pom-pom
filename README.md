@@ -46,7 +46,6 @@ Here are some screenshots of Pom Pom in action:
 ![Pomodoro Focus Paused](/src/images/screenshots/paused-focus.png)
 ![Pomodoro Short Break Running](/src/images/screenshots/running-shortBreak.png)
 
-(Replace `path/to/screenshotX.png` with the actual file paths of your screenshots.)
 
 ## Technologies Used
 
