@@ -7,6 +7,8 @@ let fontColor;
 let fontWeight;
 let countdown;
 
+let alarm = new Audio(process.env.PUBLIC_URL + '/sounds/alarm.mp3');
+
 
 function Timer(props) {
 
@@ -46,6 +48,14 @@ function Timer(props) {
     }
   }
 
+  function playAudio() {
+    alarm.play();
+  }
+
+  function pauseAudio() {
+    alarm.pause();
+  }
+
   // Count down
   useEffect(() => {
 
@@ -62,19 +72,27 @@ function Timer(props) {
     }
 
     if ( time === 0 && mode === 'focus' ) {
-      setGlobalState(prepState => ({
-        ...prepState,
-        mode: 'short-break'
-      }))
-      setTime(5 * 60);
+      playAudio();
+      setTimeout(() => {
+        pauseAudio();
+        setGlobalState(prepState => ({
+          ...prepState,
+          mode: 'short-break'
+        }))
+        setTime(5 * 60);
+      }, 4000);
     }
 
     if ( time === 0 && mode === 'short-break') {
-      setGlobalState(prepState => ({
-        ...prepState,
-        mode: 'focus'
-      }))
-      setTime(25 * 60);
+      playAudio();
+      setTimeout(() => {
+        pauseAudio();
+        setGlobalState(prepState => ({
+          ...prepState,
+          mode: 'focus'
+        }))
+        setTime(25 * 60);
+      }, 4000)
     }
 
     if ( skipped ) {

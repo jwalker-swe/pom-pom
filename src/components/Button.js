@@ -89,7 +89,7 @@ function Btn(props) {
         if ( mode === 'focus' ) {
             setGlobalState(prepState => ({
                 ...prepState,
-                mode: nextMode,
+                mode: 'short-break',
                 nextMode: 'focus',
                 running: false,
                 skipped: true
@@ -99,7 +99,7 @@ function Btn(props) {
         if ( mode === 'short-break') {
             setGlobalState(prepState => ({
                 ...prepState,
-                mode: nextMode,
+                mode: 'focus',
                 nextMode: 'short-break',
                 running: false,
                 skipped: true
