@@ -45,7 +45,7 @@ Here are some screenshots of Pom Pom in action:
 ![Pom Pom: Focus Mode - Running](/src/images/screenshots/running-focus.png)
 ![Pom Pom: Focus Mode - Paused](/src/images/screenshots/paused-focus.png)
 ![Pom Pom: Short Break - Running](/src/images/screenshots/running-shortBreak.png)
-[![Pom Pom: Demo Video](/src/images/screenshots/running-focus.png)](/src/videos/pom-pom.mp4)
+[![Pom Pom: Demo Video](/src/images/screenshots/running-focus.png)](https://youtu.be/QEg5_dwI0jc)
 
 
 ## Technologies Used
