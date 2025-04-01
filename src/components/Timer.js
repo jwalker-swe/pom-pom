@@ -69,13 +69,13 @@ function Timer(props) {
             ...prepState,
             mode: 'short-break'
           }))
-          setTime(0.1 * 60);
+          setTime(5 * 60);
         } else {
           setGlobalState(prepState => ({
             ...prepState,
             mode: 'long-break',
           }))
-          setTime(0.1 * 60);
+          setTime(30 * 60);
         }
       }, 4000);
     }
@@ -90,7 +90,7 @@ function Timer(props) {
           mode: 'focus',
           loop: loop
         }))
-        setTime(0.1 * 60);
+        setTime(25 * 60);
       }, 4000)
     }
 
@@ -104,7 +104,7 @@ function Timer(props) {
           mode: 'focus',
           loop: loop 
         }))
-        setTime(0.1 * 60);
+        setTime(25 * 60);
       }, 4000)
     }
 
