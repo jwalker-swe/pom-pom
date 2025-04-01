@@ -45,7 +45,7 @@ function App() {
         <div className="App" style={{backgroundColor: backgroundColor}}>
           <div className="Canvas">
             <Chip backgroundColor={backgroundColor} fontColor={fontColor} chipLogo={chipLogo} borderColor={chipBorderColor}/>
-            <Timer duration={0.1 * 60} fontColor={fontColor} />
+            <Timer duration={25 * 60} fontColor={fontColor} />
             <div className='btns-container'>
               <Btn btnType={'settings'} btnLogo={settingsBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
               <Btn btnType={'play-pause'} btnLogo={playBtnLogo} bgColor={mainBtnColor} btnPadding={'15px 30px'}/>
@@ -61,7 +61,7 @@ function App() {
       <div className="App" style={{backgroundColor: backgroundColor}}>
         <div className="Canvas">
           <Chip backgroundColor={backgroundColor} fontColor={fontColor} chipLogo={chipLogo} borderColor={chipBorderColor}/>
-          <Timer duration={0.1 * 60} fontColor={fontColor} />
+          <Timer duration={5 * 60} fontColor={fontColor} />
           <div className='btns-container'>
             <Btn btnType={'settings'} btnLogo={settingsBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
             <Btn btnType={'play-pause'} btnLogo={playBtnLogo} bgColor={mainBtnColor} btnPadding={'15px 30px'}/>
@@ -77,7 +77,7 @@ function App() {
       <div className="App" style={{backgroundColor: backgroundColor}}>
         <div className="Canvas">
           <Chip backgroundColor={backgroundColor} fontColor={fontColor} chipLogo={chipLogo} borderColor={chipBorderColor}/>
-          <Timer duration={0.1 * 60} fontColor={fontColor} />
+          <Timer duration={30 * 60} fontColor={fontColor} />
           <div className='btns-container'>
             <Btn btnType={'settings'} btnLogo={settingsBtnLogo} bgColor={secondaryBtnColor} btnPadding={'10px 20px'}/>
             <Btn btnType={'play-pause'} btnLogo={playBtnLogo} bgColor={mainBtnColor} btnPadding={'15px 30px'}/>
