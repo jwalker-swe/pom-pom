@@ -85,25 +85,56 @@ function Btn(props) {
     function changeMode() {
         let mode = globalState.mode;
         let nextMode = globalState.nextMode;
+        let loop = globalState.loop;
 
         if ( mode === 'focus' ) {
-            setGlobalState(prepState => ({
-                ...prepState,
-                mode: 'short-break',
-                nextMode: 'focus',
-                running: false,
-                skipped: true
-            }))
-        }
+            if ( loop < 3 ) {
+                setGlobalState(prepState => ({
+                    ...prepState,
+                    mode: 'short-break',
+                    nextMode: 'focus',
+                    running: false,
+                    skipped: true
+                }))
+            } else {
+                setGlobalState(prepState => ({
+                    ...prepState,
+                    mode: 'long-break',
+                    nextMode: 'focus',
+                    running: false,
+                    skipped: true,
+                    loop: loop
+                }))
+                console.log(`Loop value: ${globalState.loop}`);
+            }
+        } 
 
         if ( mode === 'short-break') {
+            if ( loop < 4 ) {
+                loop++;
+                setGlobalState(prepState => ({
+                    ...prepState,
+                    mode: 'focus',
+                    nextMode: 'short-break',
+                    running: false,
+                    skipped: true,
+                    loop: loop
+                }))
+                console.log(`Loop value: ${globalState.loop}`)
+            }
+        }
+
+        if ( mode === 'long-break' ) {
+            loop = 0;
             setGlobalState(prepState => ({
                 ...prepState,
                 mode: 'focus',
                 nextMode: 'short-break',
                 running: false,
-                skipped: true
+                skipped: true,
+                loop: loop
             }))
+            console.log(`Loop value: ${globalState.loop}`)
         }
     }
 

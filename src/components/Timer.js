@@ -19,6 +19,7 @@ function Timer(props) {
   let running = globalState.running;
   let mode = globalState.mode;
   let skipped = globalState.skipped;
+  let loop = globalState.loop;
 
   if ( globalState.mode === 'focus' ) {
     fontColor = '#471515';
@@ -34,19 +35,6 @@ function Timer(props) {
 
   fontWeight = running ? 'bold' : 'normal';
 
-  function resetTimer () {
-    if ( mode === 'focus' ) {
-      setTime(25 * 60);
-    }
-
-    if ( mode === 'short-break' ) {
-      setTime(5 * 60);
-    }
-
-    if (mode === 'long-break' ) {
-      setTime(15 * 60);
-    }
-  }
 
   function playAudio() {
     alarm.play();
@@ -54,6 +42,7 @@ function Timer(props) {
 
   function pauseAudio() {
     alarm.pause();
+    alarm.currentTime = 0;
   }
 
   // Count down
@@ -75,11 +64,19 @@ function Timer(props) {
       playAudio();
       setTimeout(() => {
         pauseAudio();
-        setGlobalState(prepState => ({
-          ...prepState,
-          mode: 'short-break'
-        }))
-        setTime(5 * 60);
+        if ( loop < 3 ) {
+          setGlobalState(prepState => ({
+            ...prepState,
+            mode: 'short-break'
+          }))
+          setTime(0.1 * 60);
+        } else {
+          setGlobalState(prepState => ({
+            ...prepState,
+            mode: 'long-break',
+          }))
+          setTime(0.1 * 60);
+        }
       }, 4000);
     }
 
@@ -87,11 +84,27 @@ function Timer(props) {
       playAudio();
       setTimeout(() => {
         pauseAudio();
+        loop++;
         setGlobalState(prepState => ({
           ...prepState,
-          mode: 'focus'
+          mode: 'focus',
+          loop: loop
         }))
-        setTime(25 * 60);
+        setTime(0.1 * 60);
+      }, 4000)
+    }
+
+    if ( time === 0 && mode === 'long-break' ) {
+      playAudio();
+      setTimeout(() => {
+        pauseAudio();
+        loop = 0;
+        setGlobalState(prepState => ({
+          ...prepState,
+          mode: 'focus',
+          loop: loop 
+        }))
+        setTime(0.1 * 60);
       }, 4000)
     }
 
@@ -101,7 +114,7 @@ function Timer(props) {
               ...prepState,
               skipped: false
             }))
-            setTime(5 * 60)
+            setTime(5 * 60);
           }
     
           if ( mode === 'focus' ) {
@@ -110,6 +123,14 @@ function Timer(props) {
               skipped: false
             }))
             setTime(25 * 60);
+          }
+
+          if ( mode === 'long-break' ) {
+            setGlobalState(prepState => ({
+              ...prepState,
+              skipped: false
+            }))
+            setTime(30 * 60);
           }
         }
 
