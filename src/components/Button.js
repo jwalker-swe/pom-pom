@@ -18,6 +18,7 @@ function Btn(props) {
 
     // Get globalState
     const { globalState, setGlobalState } = useContext(GlobalStateContext);
+    const { settings, setSettings } = useContext(GlobalStateContext);
 
 
     // Set variables based on globalState.mode and globalState.running
@@ -138,6 +139,10 @@ function Btn(props) {
         }
     }
 
+    function openSettings() {
+        setSettings('visible');
+    }
+
     // Generate components based on conditionals
 
     if (props.btnType === 'play-pause') {
@@ -152,7 +157,7 @@ function Btn(props) {
 
     if (props.btnType === 'settings') {
         return (
-            <button className='btn' style={{backgroundColor: secondaryBtnColor, padding: props.btnPadding}}>
+            <button onClick={openSettings}  className='btn' style={{backgroundColor: secondaryBtnColor, padding: props.btnPadding}}>
                 <div className='btn-icon-container'>
                     <img src={settingsBtnLogo}></img>
                 </div>

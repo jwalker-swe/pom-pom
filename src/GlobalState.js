@@ -13,8 +13,10 @@ const GlobalStateProvider = ({ children }) => {
         loop: 0
     });
 
+    const [settings, setSettings] = useState('hidden');
+
     return (
-        <GlobalStateContext.Provider value={{ globalState, setGlobalState }}>
+        <GlobalStateContext.Provider value={{ globalState, setGlobalState, settings, setSettings }}>
             {children}
         </GlobalStateContext.Provider>
     );

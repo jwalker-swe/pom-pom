@@ -1,0 +1,47 @@
+
+
+.number-spinner {
+    display: flex;
+
+    border: solid;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+.control {
+    width: 8px;
+    height: auto;
+
+    margin: 0 4px;
+}
+
+.control:hover {
+    cursor: pointer;
+}
+
+input {
+    width: 20px;
+    height: 14px;
+
+    font-size: 8px;
+
+    text-align: center;
+
+    border-top: none;
+    border-bottom: none;
+    border-right: solid;
+    border-left: solid;
+    border-width: 1px;
+
+    background-color: rgba(0, 0, 0, 0);
+}
+
+input:focus {
+    outline: none;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
