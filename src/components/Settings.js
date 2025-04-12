@@ -4,7 +4,7 @@ import '../styles/Settings.css';
 
 import NumberSpinner from './NumberSpinner';
 
-const exitBtn = process.env.PUBLIC_URL + '/images/icons/focus/exit.png';
+let exitBtn = process.env.PUBLIC_URL + '/images/icons/focus/exit.png';
 
 function Settings() {
 
@@ -31,18 +31,21 @@ function Settings() {
         backgroundColor = '#ffcdcd';
         fontColor = '#471515';
         borderColor = '#471515';
+        exitBtn = process.env.PUBLIC_URL + '/images/icons/focus/exit.png';
       }
     
       if ( globalState.mode === 'short-break' ) {
         backgroundColor = '#cdf4d6';
         fontColor = '#14401D';
         borderColor = '#14401D';
+        exitBtn = process.env.PUBLIC_URL + '/images/icons/short-break/exit.png';
       }
     
       if ( globalState.mode === 'long-break' ) {
         backgroundColor = '#cde9ff';
         fontColor = '#153047';
         borderColor = '#153047';
+        exitBtn = process.env.PUBLIC_URL + '/images/icons/long-break/exit.png';
       }
 
     return (
