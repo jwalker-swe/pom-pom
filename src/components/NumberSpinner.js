@@ -5,8 +5,9 @@ import { GlobalStateContext } from '../GlobalState';
 
 import '../styles/NumberSpinner.css';
 
-const upArrow = process.env.PUBLIC_URL + '/images/icons/focus/settings-up-arrow.png';
-const downArrow = process.env.PUBLIC_URL + '/images/icons/focus/settings-down-arrow.png';
+let upArrow = process.env.PUBLIC_URL + '/images/icons/focus/settings-up-arrow.png';
+let downArrow = process.env.PUBLIC_URL + '/images/icons/focus/settings-down-arrow.png';
+let exit = process.env.PUBLIC_URL + '/images/icons/focus/exit.png';
 
 function NumberSpinner(props) {
     // Get current mode and other states
@@ -17,6 +18,20 @@ function NumberSpinner(props) {
     const focusTime = Number(localStorage.getItem('focus-length'));
     const shortTime = Number(localStorage.getItem('short-length'));
     const longTime = Number(localStorage.getItem('long-length'));
+
+    if ( mode === 'focus' ) {
+        upArrow = process.env.PUBLIC_URL + '/images/icons/focus/settings-up-arrow.png';
+        downArrow = process.env.PUBLIC_URL + '/images/icons/focus/settings-down-arrow.png';
+        exit = process.env.PUBLIC_URL + '/images/icons/focus/exit.png'; 
+    } else if ( mode === 'short-break' ) {
+        upArrow = process.env.PUBLIC_URL + '/images/icons/short-break/settings-up-arrow.png';
+        downArrow = process.env.PUBLIC_URL + '/images/icons/short-break/settings-down-arrow.png';
+        exit = process.env.PUBLIC_URL + '/images/icons/short-break/exit.png'; 
+    } else {
+        upArrow = process.env.PUBLIC_URL + '/images/icons/long-break/settings-up-arrow.png';
+        downArrow = process.env.PUBLIC_URL + '/images/icons/long-break/settings-down-arrow.png';
+        exit = process.env.PUBLIC_URL + '/images/icons/long-break/exit.png'; 
+    }
 
     // Set functions for getting timer values
 

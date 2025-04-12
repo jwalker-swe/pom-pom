@@ -16,12 +16,37 @@ function Settings() {
 
     let visibility = settings;
 
+    let backgroundColor = 'rgba(255, 76, 76, 0.15)';
+    let mainBtnColor = 'rgba(255, 76, 76, 0.71)';
+    let secondaryBtnColor = 'rgba(255, 76, 76, 0.15)'
+    let fontColor = '#471515';
+    let borderColor = '#471515';
+    let chipBorderColor = '#471515';
+
     function closeSettings() {
         setSettings('hidden');
     }
 
+    if ( globalState.mode === 'focus' ) {
+        backgroundColor = '#ffcdcd';
+        fontColor = '#471515';
+        borderColor = '#471515';
+      }
+    
+      if ( globalState.mode === 'short-break' ) {
+        backgroundColor = '#cdf4d6';
+        fontColor = '#14401D';
+        borderColor = '#14401D';
+      }
+    
+      if ( globalState.mode === 'long-break' ) {
+        backgroundColor = '#cde9ff';
+        fontColor = '#153047';
+        borderColor = '#153047';
+      }
+
     return (
-        <div className='settings-container' style={{visibility: visibility}}>
+        <div className='settings-container' style={{visibility: visibility, backgroundColor: backgroundColor, color: fontColor,  borderColor: borderColor}}>
             <div className='settings-header'>
                 <h2 className='settings-heading'>Settings</h2>
                 <div className='exit-container' onClick={closeSettings}>                
