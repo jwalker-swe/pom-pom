@@ -11,6 +11,8 @@ function Settings() {
     // Get globalState
     const { globalState, setGlobalState } = useContext(GlobalStateContext);
     const { settings, setSettings } = useContext(GlobalStateContext);
+    const { timeLength, setTimeLength } = useContext(GlobalStateContext);
+
 
     let visibility = settings;
 

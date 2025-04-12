@@ -141,6 +141,11 @@ function Btn(props) {
 
     function openSettings() {
         setSettings('visible');
+
+        setGlobalState(prepState => ({
+            ...prepState,
+            running: false
+        }))
     }
 
     // Generate components based on conditionals

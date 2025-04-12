@@ -20,6 +20,9 @@ function Timer(props) {
   let mode = globalState.mode;
   let skipped = globalState.skipped;
   let loop = globalState.loop;
+  let focus = globalState.focusLength;
+  let short = globalState.shortLength;
+  let long = globalState.longLength;
 
   if ( globalState.mode === 'focus' ) {
     fontColor = '#471515';
@@ -45,6 +48,21 @@ function Timer(props) {
     alarm.currentTime = 0;
   }
 
+  function updateTime() {
+    if ( mode === 'focus' ) {
+      setTime(focus * 60);
+    } else if ( mode === 'short-break' ) {
+      setTime(short * 60);
+    } else {
+      setTime(long * 60);
+    }
+  }
+
+  useEffect(() => {
+    updateTime();
+  }, [focus, short, long])
+
+
   // Count down
   useEffect(() => {
 
@@ -69,13 +87,13 @@ function Timer(props) {
             ...prepState,
             mode: 'short-break'
           }))
-          setTime(5 * 60);
+          setTime(short * 60);
         } else {
           setGlobalState(prepState => ({
             ...prepState,
             mode: 'long-break',
           }))
-          setTime(30 * 60);
+          setTime(long * 60);
         }
       }, 4000);
     }
@@ -90,7 +108,7 @@ function Timer(props) {
           mode: 'focus',
           loop: loop
         }))
-        setTime(25 * 60);
+        setTime(focus * 60);
       }, 4000)
     }
 
@@ -104,41 +122,41 @@ function Timer(props) {
           mode: 'focus',
           loop: loop 
         }))
-        setTime(25 * 60);
+        setTime(focus * 60);
       }, 4000)
     }
 
     if ( skipped ) {
-          if ( mode === 'short-break' ) {
-            setGlobalState(prepState => ({
-              ...prepState,
-              skipped: false
-            }))
-            setTime(5 * 60);
-          }
-    
-          if ( mode === 'focus' ) {
-            setGlobalState(prepState => ({
-              ...prepState,
-              skipped: false
-            }))
-            setTime(25 * 60);
-          }
+      if ( mode === 'short-break' ) {
+        setGlobalState(prepState => ({
+          ...prepState,
+          skipped: false
+        }))
+        setTime(short * 60);
+      }
 
-          if ( mode === 'long-break' ) {
-            setGlobalState(prepState => ({
-              ...prepState,
-              skipped: false
-            }))
-            setTime(30 * 60);
-          }
-        }
+      if ( mode === 'focus' ) {
+        setGlobalState(prepState => ({
+          ...prepState,
+          skipped: false
+        }))
+        setTime(focus * 60);
+      }
+
+      if ( mode === 'long-break' ) {
+        setGlobalState(prepState => ({
+          ...prepState,
+          skipped: false
+        }))
+        setTime(long * 60);
+      }
+    }
 
     return () => {
       clearTimeout(countdown);
     }
 
-  }, [time, running, skipped])
+  }, [time, running, skipped, focus, short, long])
 
   // Formate time for display
   const formatTime = (time) => {
@@ -164,6 +182,7 @@ function Timer(props) {
     return formattedTime;
   }
 
+  
   return (
     <div className='container timer-container'>
         <h1 className='timer-clock' style={{color: fontColor, fontWeight: fontWeight}}>

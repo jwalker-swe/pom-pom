@@ -10,11 +10,13 @@ const downArrow = process.env.PUBLIC_URL + '/images/icons/focus/settings-down-ar
 
 function NumberSpinner(props) {
     // Get current mode and other states
-    const {globalState, setGlobalState} = useContext(GlobalStateContext);
-    const [focusTime, setFocusTime] = useState(25);
-    const [shortTime, setShortTime] = useState(5);
-    const [longTime, setLongTime] = useState(30);
+    const { globalState, setGlobalState } = useContext(GlobalStateContext);
+
     const mode = globalState.mode;
+
+    const focusTime = Number(localStorage.getItem('focus-length'));
+    const shortTime = Number(localStorage.getItem('short-length'));
+    const longTime = Number(localStorage.getItem('long-length'));
 
     // Set functions for getting timer values
 
@@ -24,15 +26,27 @@ function NumberSpinner(props) {
         if ( props.timeType === 'focus' ) {
             time = focusTime;
             time += 5;
-            setFocusTime(time);
+            setGlobalState(prepState => ({
+                ...prepState,
+                focusLength: time
+            }))
+            localStorage.setItem('focus-length', time);
         } else if ( props.timeType === 'short-break' ) {
             time = shortTime;
             time += 5;
-            setShortTime(time);
+            setGlobalState(prepState => ({
+                ...prepState,
+                shortLength: time
+            }))
+            localStorage.setItem('short-length', time);
         } else {
             time = longTime;
             time += 5;
-            setLongTime(time);
+            setGlobalState(prepState => ({
+                ...prepState,
+                longLength: time
+            }))
+            localStorage.setItem('long-length', time);
         }
     }
 
@@ -42,25 +56,49 @@ function NumberSpinner(props) {
         if ( props.timeType === 'focus' ) {
             time = focusTime;
             time -= 5;
-            setFocusTime(time);
+            setGlobalState(prepState => ({
+                ...prepState,
+                focusLength: time
+            }))
+            localStorage.setItem('focus-length', time);
         } else if ( props.timeType === 'short-break' ) {
             time = shortTime;
             time -= 5;
-            setShortTime(time);
+            setGlobalState(prepState => ({
+                ...prepState,
+                shortLength: time
+            }))
+            localStorage.setItem('short-length', time);
         } else {
             time = longTime;
             time -= 5;
-            setLongTime(time);
+            setGlobalState(prepState => ({
+                ...prepState,
+                longLength: time
+            }))
+            localStorage.setItem('long-length', time);
         }
     }
 
     function changeTime(event) {
         if ( props.timeType === 'focus' ) {
-            setFocusTime(Number(event.target.value));
+            setGlobalState(prepState => ({
+                ...prepState,
+                focusLength: Number(event.target.value)
+            }))
+            localStorage.setItem('focus-length', Number(event.target.value));
         } else if ( props.timeType === 'short-break' ) {
-            setShortTime(Number(event.target.value));
+            setGlobalState(prepState => ({
+                ...prepState,
+                shortLength: Number(event.target.value)
+            }))
+            localStorage.setItem('short-length', Number(event.target.value));
         } else {
-            setLongTime(Number(event.target.value));
+            setGlobalState(prepState => ({
+                ...prepState,
+                longLength: Number(event.target.value)
+            }))
+            localStorage.setItem('long-length', Number(event.target.value));
         }
     }
 
