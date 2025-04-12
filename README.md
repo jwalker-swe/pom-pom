@@ -42,9 +42,15 @@ To run Pom Pom locally, follow these steps:
 
 Here are some screenshots of Pom Pom in action:
 
-![Pom Pom: Focus Mode - Running](/src/images/screenshots/running-focus.png)
-![Pom Pom: Focus Mode - Paused](/src/images/screenshots/paused-focus.png)
-![Pom Pom: Short Break - Running](/src/images/screenshots/running-shortBreak.png)
+![Pom Pom: Focus Mode - Paused](/src/images/screenshots/focus-mode-001.png)
+![Pom Pom: Focus Mode - Running](/src/images/screenshots/focus-mode-002.png)
+![Pom Pom: Short Break - Paused](/src/images/screenshots/short-mode-001.png)
+![Pom Pom: Short Break - Running](/src/images/screenshots/short-mode-002.png)
+![Pom Pom: Long Break - Paused](/src/images/screenshots/long-mode-001.png)
+![Pom Pom: Long Break - Running](/src/images/screenshots/long-mode-002.png)
+![Pom Pom: Focus Mode - Settings](/src/images/screenshots/settings-001.png)
+![Pom Pom: Short Break - Settings](/src/images/screenshots/settings-002.png)
+![Pom Pom: Long Break - Settings](/src/images/screenshots/settings-003.png)
 [![Pom Pom: Demo Video](/src/images/screenshots/running-focus.png)](https://youtu.be/QEg5_dwI0jc)
 
 
